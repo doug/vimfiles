@@ -1,0 +1,3 @@
+Vim snippets and vim files all managed with pathogen and bundles as submodules whenever possible.
+
+git submodule update --init --recursive
