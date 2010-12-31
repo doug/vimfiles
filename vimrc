@@ -383,7 +383,8 @@ vmap <S-Left> h
 vmap <S-Right> l
 
 " Use the darkspectrum color scheme
-colorscheme darkspectrum
+" colorscheme darkspectrum
+colorscheme monokai
 
 set ignorecase          " case-insensitive search
 set smartcase           " upper-case sensitive search
