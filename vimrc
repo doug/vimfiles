@@ -22,6 +22,7 @@ set linebreak   "wrap lines at convenient points
 
 " fuck those swp files
 set backupdir=/tmp
+set noswapfile
 
 "statusline setup
 set statusline=%f       "tail of the filename
