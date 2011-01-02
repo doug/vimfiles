@@ -197,9 +197,9 @@ if v:version >= 703
 endif
 
 "indent settings
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set shiftwidth=4
+set tabstop=4
+set noexpandtab
 set autoindent
 
 "folding settings
