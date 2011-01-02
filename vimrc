@@ -338,6 +338,9 @@ nnoremap <c-n> :NERDTreeToggle<CR>
 
 nnoremap <c-f> :FufFileWithCurrentBufferDir<CR>
 
+" NERDCommenter
+filetype plugin on
+
 
 " Fast saving
 nmap <leader>w :w!<cr>
