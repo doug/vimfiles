@@ -1,6 +1,7 @@
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
-set nocompatible
+set nocompatible " use vim defaults
+set scrolloff=3  " keep 3 lines when scrolling
 
 "Use pathogen to load all bundles
 call pathogen#runtime_append_all_bundles()
@@ -23,6 +24,10 @@ set linebreak   "wrap lines at convenient points
 " fuck those swp files
 set backupdir=/tmp
 set noswapfile
+set nobackup
+
+set number " show line numbers
+
 
 "statusline setup
 set statusline=%f       "tail of the filename
@@ -200,7 +205,7 @@ endif
 set shiftwidth=4
 set tabstop=4
 set noexpandtab
-set autoindent
+set autoindent " set auto-indenting on for programming
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -241,7 +246,7 @@ if !has("gui")
 endif
 
 if has("gui_running")
-  set guifont=Anonymous:h13
+  set guifont=Replica-Mono\ 10
 endif
 
 
@@ -300,7 +305,6 @@ endif
 
 " Extra DEFS and bindings
 
-set number
 
 let mapleader = ","
 let g:mapleader = ","
