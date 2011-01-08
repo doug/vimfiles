@@ -460,3 +460,6 @@ map <S-C-k> <C-w>R
 map <S-C-h> <C-w>R
 map <S-C-l> <C-w>r
 
+"Pretty format JSON
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+
