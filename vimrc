@@ -463,6 +463,7 @@ map <S-C-l> <C-w>r
 "Pretty format JSON
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
+"Open in browser with cmd-enter
 nmap <D-CR> <Plug>(openbrowser-open)
 vmap <D-CR> <Plug>(openbrowser-open)
 
