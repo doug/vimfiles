@@ -328,7 +328,6 @@ endif
 
 " Extra DEFS and bindings
 
-
 let mapleader = ","
 let g:mapleader = ","
 let maplocalleader=","
@@ -363,14 +362,12 @@ cmap w!! %!sudo tee > /dev/null %
 " NERDTreeToggle
 nnoremap <c-n> :NERDTreeToggle<CR>
 
-nnoremap <c-f> :FufFileWithCurrentBufferDir<CR>
-
 " NERDCommenter
 filetype plugin on
 
-
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>w :w!<CR>
+nmap <C-W> :w!<CR>
 
 " Remember folding is
 " za zo <space> etc
@@ -384,9 +381,9 @@ nnoremap <c-j> <PageDown>
 nnoremap <c-k> <PageUp>
 
 " Copy and Paste
-nmap <D-V> "+gP
-imap <D-V> <ESC><C-V>i
-vmap <D-C> "+y
+nmap <C-V> "+gP
+imap <C-V> <ESC><C-V>i
+vmap <C-C> "+y
 
 " remove trailing whitespace
 "autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
@@ -424,25 +421,45 @@ set textwidth=100
 highlight ColorColumn ctermbg=black guibg=#444444
 
 " Map switching tabs to cmd-1,2,3, etc like TextMate
-map <D-1> :tabn 1<CR>
-map <D-2> :tabn 2<CR>
-map <D-3> :tabn 3<CR>
-map <D-4> :tabn 4<CR>
-map <D-5> :tabn 5<CR>
-map <D-6> :tabn 6<CR>
-map <D-7> :tabn 7<CR>
-map <D-8> :tabn 8<CR>
-map <D-9> :tabn 9<CR>
-
-map! <D-1> <C-O>:tabn 1<CR>
-map! <D-2> <C-O>:tabn 2<CR>
-map! <D-3> <C-O>:tabn 3<CR>
-map! <D-4> <C-O>:tabn 4<CR>
-map! <D-5> <C-O>:tabn 5<CR>
-map! <D-6> <C-O>:tabn 6<CR>
-map! <D-7> <C-O>:tabn 7<CR>
-map! <D-8> <C-O>:tabn 8<CR>
-map! <D-9> <C-O>:tabn 9<CR>
+if has("macunix")
+	map <D-1> :tabn 1<CR>
+	map <D-2> :tabn 2<CR>
+	map <D-3> :tabn 3<CR>
+	map <D-4> :tabn 4<CR>
+	map <D-5> :tabn 5<CR>
+	map <D-6> :tabn 6<CR>
+	map <D-7> :tabn 7<CR>
+	map <D-8> :tabn 8<CR>
+	map <D-9> :tabn 9<CR>
+	map! <D-1> <C-O>:tabn 1<CR>
+	map! <D-2> <C-O>:tabn 2<CR>
+	map! <D-3> <C-O>:tabn 3<CR>
+	map! <D-4> <C-O>:tabn 4<CR>
+	map! <D-5> <C-O>:tabn 5<CR>
+	map! <D-6> <C-O>:tabn 6<CR>
+	map! <D-7> <C-O>:tabn 7<CR>
+	map! <D-8> <C-O>:tabn 8<CR>
+	map! <D-9> <C-O>:tabn 9<CR>
+elseif has("unix")
+	map <C-1> :tabn 1<CR>
+	map <C-2> :tabn 2<CR>
+	map <C-3> :tabn 3<CR>
+	map <C-4> :tabn 4<CR>
+	map <C-5> :tabn 5<CR>
+	map <C-6> :tabn 6<CR>
+	map <C-7> :tabn 7<CR>
+	map <C-8> :tabn 8<CR>
+	map <C-9> :tabn 9<CR>
+	map! <C-1> <C-O>:tabn 1<CR>
+	map! <C-2> <C-O>:tabn 2<CR>
+	map! <C-3> <C-O>:tabn 3<CR>
+	map! <C-4> <C-O>:tabn 4<CR>
+	map! <C-5> <C-O>:tabn 5<CR>
+	map! <C-6> <C-O>:tabn 6<CR>
+	map! <C-7> <C-O>:tabn 7<CR>
+	map! <C-8> <C-O>:tabn 8<CR>
+	map! <C-9> <C-O>:tabn 9<CR>
+endif
 
 "Smart way to move btw. windows
 map <C-j> <C-W>j
@@ -464,6 +481,17 @@ map <S-C-l> <C-w>r
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 "Open in browser with cmd-enter
-nmap <D-CR> <Plug>(openbrowser-open)
-vmap <D-CR> <Plug>(openbrowser-open)
+if has("macunix")
+	nmap <D-CR> <Plug>(openbrowser-open)
+	vmap <D-CR> <Plug>(openbrowser-open)
+else
+	nmap <C-CR> <Plug>(openbrowser-open)
+	vmap <C-CR> <Plug>(openbrowser-open)
+endif
+
+" Add emacs beginning and end of line
+map <C-A> ^
+map! <C-A> <C-O>^<CR>
+map <C-E> $
+map! <C-E> <C-O>$<CR>
 
