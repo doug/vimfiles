@@ -10,3 +10,6 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
+[submodule "bundle/open-browser"]
+	path = bundle/open-browser
+	url = https://github.com/tyru/open-browser.vim.git

@@ -384,9 +384,9 @@ nnoremap <c-j> <PageDown>
 nnoremap <c-k> <PageUp>
 
 " Copy and Paste
-nmap <C-V> "+gP
-imap <C-V> <ESC><C-V>i
-vmap <C-C> "+y
+nmap <D-V> "+gP
+imap <D-V> <ESC><C-V>i
+vmap <D-C> "+y
 
 " remove trailing whitespace
 "autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
@@ -459,4 +459,3 @@ map <S-C-j> <C-w>r
 map <S-C-k> <C-w>R
 map <S-C-h> <C-w>R
 map <S-C-l> <C-w>r
-
