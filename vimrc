@@ -380,9 +380,15 @@ nnoremap <c-j> <PageDown>
 nnoremap <c-k> <PageUp>
 
 " Copy and Paste
-nmap <C-V> "+gP
-imap <C-V> <ESC><C-V>i
-vmap <C-C> "+y
+if has("macunix")
+	nmap <D-V> "+gP
+	imap <D-V> <ESC><C-V>i
+	vmap <D-C> "+y
+else
+	nmap <C-V> "+gP
+	imap <C-V> <ESC><C-V>i
+	vmap <C-C> "+y
+endif
 
 " remove trailing whitespace
 "autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
@@ -486,7 +492,8 @@ endif
 
 " Add emacs beginning and end of line
 map <C-A> ^
-map! <C-A> <C-O>^<CR>
+map! <C-A> <C-O>^
 map <C-E> $
-map! <C-E> <C-O>$<CR>
+map! <C-E> <C-O>$
 
+nmap <C-Q> :q<CR>
