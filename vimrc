@@ -496,4 +496,3 @@ map! <C-A> <C-O>^
 map <C-E> $
 map! <C-E> <C-O>$
 
-nmap <C-Q> :q<CR>
