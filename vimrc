@@ -445,7 +445,7 @@ if has("macunix")
 	map! <D-7> <C-O>:tabn 7<CR>
 	map! <D-8> <C-O>:tabn 8<CR>
 	map! <D-9> <C-O>:tabn 9<CR>
-elseif has("unix")
+else
 	map <C-1> :tabn 1<CR>
 	map <C-2> :tabn 2<CR>
 	map <C-3> :tabn 3<CR>
