@@ -2,8 +2,22 @@ Vim snippets and vim files all managed with pathogen and bundles as submodules w
 
 git submodule update --init --recursive
 
+bundle requirements
+===================
+
+command-t
+---------
 for command-t bundle must build with the correct version of ruby
 for rvm use system or rvm use 1.8.7 is probably correct
-then rake make from that directory
+then rake make from the command-t bundle directory
+
+pysmell
+-------
+pip install pysmell
+
+ctags
+-----
+ubuntu: sudo apt-get install exuberant-ctags
+mac: brew install ctags
 
 
