@@ -21,7 +21,7 @@ set incsearch	"find the next match as we type the search
 set hlsearch	"hilight searches by default
 set showmatch	" show matching parenthesis
 
-set nowrap	  "dont wrap lines
+set nowrap	  "don't wrap lines
 set linebreak   "wrap lines at convenient points
 
 " This isn't the 70s no more backup and swp files
@@ -384,6 +384,7 @@ filetype plugin indent on
 
 " Fast saving
 nmap ;w :w!<CR>
+imap ;w <ESC>:w!<CR>a
 
 " Remember folding is
 " za zo <space> etc
@@ -399,11 +400,11 @@ nnoremap <c-k> <PageUp>
 " Copy and Paste
 if has("macunix")
 	nmap <D-V> "+gP
-	imap <D-V> <ESC><C-V>i
+	imap <D-V> <ESC><C-V>a
 	vmap <D-C> "+y
 else
 	nmap <C-V> "+gP
-	imap <C-V> <ESC><C-V>i
+	imap <C-V> <ESC><C-V>a
 	vmap <C-C> "+y
 endif
 
@@ -434,7 +435,11 @@ vmap <S-Right> l
 
 " Use the monokai color scheme
 if &t_Co >= 256 || has("gui_running")
-	colorscheme monokai
+	if has("gui_running")
+		colorscheme monokai
+	else
+		colorscheme darkspectrum
+	endif
 endif
 
 if &t_Co > 2 || has("gui_running")
@@ -534,4 +539,11 @@ nnoremap k gk
 
 " stop highlighting after I searched
 nmap <silent> // :nohlsearch<CR>
+
+" sparkup next shouldn't conflict with nerdtree
+let g:sparkupNextMapping = '<nop>'
+
+" paste toggle so it just pastes raw text
+set pastetoggle=<F2>
+
 
