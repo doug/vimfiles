@@ -40,6 +40,3 @@
 [submodule "bundle/vim-taglist"]
 	path = bundle/vim-taglist
 	url = https://github.com/mexpolk/vim-taglist.git
-[submodule "bundle/pysmell-vim"]
-	path = bundle/pysmell-vim
-	url = git@github.com:doug/pysmell-vim.git
