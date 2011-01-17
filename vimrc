@@ -496,3 +496,7 @@ map! <C-A> <C-O>^
 map <C-E> $
 map! <C-E> <C-O>$
 
+" Quick open with command-t
+map <c-f> :CommandT<CR>
+
+
