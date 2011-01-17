@@ -11,23 +11,22 @@ set backspace=indent,eol,start
 
 "store lots of :cmdline history
 set history=1000
+"lots of undo
+set undolevels=1000
 
 set showcmd	 "show incomplete cmds down the bottom
 set showmode	"show current mode down the bottom
 
-set incsearch   "find the next match as we type the search
+set incsearch	"find the next match as we type the search
 set hlsearch	"hilight searches by default
+set showmatch	" show matching parenthesis
 
 set nowrap	  "dont wrap lines
 set linebreak   "wrap lines at convenient points
 
-" fuck those swp files
-"set backupdir=/tmp
-"set noswapfile
-"set nobackup
-set backup
-set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
+" This isn't the 70s no more backup and swp files
+set noswapfile
+set nobackup
 
 set number " show line numbers
 
@@ -227,8 +226,11 @@ endif
 "indent settings
 set shiftwidth=4
 set tabstop=4
+set shiftround " use multiple of shiftwidth when indenting with '<' or '>'
+set smarttab " insert tabs on start of line according to shiftwidth not tabstop
 set noexpandtab
 set autoindent " set auto-indenting on for programming
+set copyindent " copy previous indentation on autoindenting
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -237,11 +239,21 @@ set nofoldenable		"dont fold by default
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu				"enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore=*.o,*.obj,*~,*.swp,*.bak,*.pyc,*.class "stuff to ignore when tab completing
+
+set title "change the terminal's title
+
+" stop frakkin beeping
+set visualbell
+set noerrorbells
 
 "display tabs and trailing spaces
 set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
+"if has('autocmd')
+	"autocmd filetype html,xml set listchars-=tab:>.
+"endif
+
 
 set formatoptions-=o "dont continue comments when pushing o/O
 
@@ -260,7 +272,7 @@ set ttymouse=xterm2
 "tell the term has 256 colors
 set t_Co=256
 
-"hide buffers when not displayed
+"hide buffers when not displayed instead of closing them
 set hidden
 
 "dont load csapprox if we no gui support - silences an annoying warning
@@ -356,17 +368,22 @@ nmap <LocalLeader>fo  :%foldopen!<cr>
 nmap <LocalLeader>fc  :%foldclose!<cr>
 
 " If I forgot to sudo vim a file, do that with :w!!
-cmap w!! %!sudo tee > /dev/null %
+" SUPERSAVE
+cmap w!! w !sudo tee % >/dev/null
 
 
 " NERDTreeToggle
 nnoremap <c-n> :NERDTreeToggle<CR>
 
-" NERDCommenter
+" filetype plugin
 filetype plugin on
+filetype plugin indent on
+"if has('autocmd')
+	"autocmd filetype python set expandtab
+"endif
 
 " Fast saving
-nmap <leader>w :w!<CR>
+nmap ;w :w!<CR>
 
 " Remember folding is
 " za zo <space> etc
@@ -415,12 +432,19 @@ vmap <S-Down> j
 vmap <S-Left> h
 vmap <S-Right> l
 
-" Use the darkspectrum color scheme
-" colorscheme darkspectrum
-colorscheme monokai
+" Use the monokai color scheme
+if &t_Co >= 256 || has("gui_running")
+	colorscheme monokai
+endif
+
+if &t_Co > 2 || has("gui_running")
+	" switch syntax highlighting on, when the terminal has colors
+	syntax on
+endif
 
 set ignorecase		  " case-insensitive search
 set smartcase		   " upper-case sensitive search
+
 
 set textwidth=100
 highlight ColorColumn ctermbg=black guibg=#444444
@@ -499,4 +523,15 @@ map! <C-E> <C-O>$
 " Quick open with command-t
 map <c-f> :CommandT<CR>
 
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
+
+" makes jumping down a line work as expected with wrapped text
+" jumping to the next row in the editor rather than next line in the file
+nnoremap j gj
+nnoremap k gk
+
+" stop highlighting after I searched
+nmap <silent> // :nohlsearch<CR>
 
