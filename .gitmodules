@@ -34,3 +34,6 @@
 [submodule "localvimrc"]
 	path = localvimrc
 	url = https://github.com/vim-scripts/localvimrc.git
+[submodule "sparkup"]
+	path = sparkup
+	url = https://github.com/rstacruz/sparkup.git
