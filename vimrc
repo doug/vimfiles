@@ -546,4 +546,5 @@ let g:sparkupNextMapping = '<nop>'
 " paste toggle so it just pastes raw text
 set pastetoggle=<F2>
 
-
+" rerun last command
+nmap <c-b> 1@:
