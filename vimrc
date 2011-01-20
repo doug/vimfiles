@@ -384,7 +384,8 @@ filetype plugin indent on
 
 " Fast saving
 nmap ;w :w!<CR>
-imap ;w <ESC>:w!<CR>a
+"imap ;w <ESC>:w!<CR>a
+imap ;w <ESC>:w!<CR>
 
 " Remember folding is
 " za zo <space> etc
