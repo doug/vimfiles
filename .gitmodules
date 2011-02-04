@@ -37,9 +37,6 @@
 [submodule "bundle/vim-taglist"]
 	path = bundle/vim-taglist
 	url = https://github.com/mexpolk/vim-taglist.git
-[submodule "bundle/pysmell"]
-	path = bundle/pysmell
-	url = https://github.com/vim-scripts/PySmell.git
 [submodule "bundle/lusty"]
 	path = bundle/lusty
 	url = https://github.com/sjbach/lusty.git
