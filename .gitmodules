@@ -43,3 +43,6 @@
 [submodule "bundle/localvimrc"]
 	path = bundle/localvimrc
 	url = https://github.com/vim-scripts/localvimrc.git
+[submodule "bundle/scala"]
+	path = bundle/scala
+	url = https://github.com/rosstimson/scala-vim-support.git
