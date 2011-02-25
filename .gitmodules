@@ -31,18 +31,18 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
-[submodule "localvimrc"]
-	path = localvimrc
-	url = https://github.com/vim-scripts/localvimrc.git
 [submodule "bundle/vim-sparkup"]
 	path = bundle/vim-sparkup
 	url = http://github.com/bingaman/vim-sparkup.git
 [submodule "bundle/vim-taglist"]
 	path = bundle/vim-taglist
 	url = https://github.com/mexpolk/vim-taglist.git
-[submodule "bundle/pysmell"]
-	path = bundle/pysmell
-	url = https://github.com/vim-scripts/PySmell.git
 [submodule "bundle/lusty"]
 	path = bundle/lusty
 	url = https://github.com/sjbach/lusty.git
+[submodule "bundle/localvimrc"]
+	path = bundle/localvimrc
+	url = https://github.com/vim-scripts/localvimrc.git
+[submodule "bundle/scala"]
+	path = bundle/scala
+	url = https://github.com/rosstimson/scala-vim-support.git
