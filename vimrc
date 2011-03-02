@@ -224,11 +224,12 @@ if v:version >= 703
 endif
 
 "indent settings
-set shiftwidth=4
+set shiftwidth=2
+set softtabstop=2
 set tabstop=4
 set shiftround " use multiple of shiftwidth when indenting with '<' or '>'
 set smarttab " insert tabs on start of line according to shiftwidth not tabstop
-set noexpandtab
+set expandtab
 set autoindent " set auto-indenting on for programming
 set copyindent " copy previous indentation on autoindenting
 
