@@ -372,7 +372,6 @@ nmap <LocalLeader>fc  :%foldclose!<cr>
 " SUPERSAVE
 cmap w!! w !sudo tee % >/dev/null
 
-
 " NERDTreeToggle
 nnoremap <c-n> :NERDTreeToggle<CR>
 
