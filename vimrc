@@ -448,11 +448,15 @@ vmap <S-Right> l
 syntax enable
 set background=dark
 colorscheme solarized
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="high"
 
 if &t_Co > 2 || has("gui_running")
 	" switch syntax highlighting on, when the terminal has colors
 	syntax on
+	let g:solarized_termcolors=256
 endif
 
 set ignorecase		  " case-insensitive search
