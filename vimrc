@@ -346,6 +346,9 @@ let g:mapleader = ","
 let maplocalleader=","
 let g:maplocalleader=","
 
+" Ignore ruby warning in lusty juggler
+let g:LustyJugglerSuppressRubyWarning = 1
+
 map Y y$
 " for yankring to work with previous mapping:
 function! YRRunAfterMaps()
