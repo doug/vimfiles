@@ -448,6 +448,7 @@ vmap <S-Right> l
 syntax enable
 set background=dark
 colorscheme solarized
+let g:solarized_termcolors=256
 
 if &t_Co > 2 || has("gui_running")
 	" switch syntax highlighting on, when the terminal has colors
