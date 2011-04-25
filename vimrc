@@ -438,13 +438,16 @@ vmap <S-Left> h
 vmap <S-Right> l
 
 " Use the monokai color scheme
-if &t_Co >= 256 || has("gui_running")
-	if has("gui_running")
-		colorscheme monokai
-	else
-		colorscheme darkspectrum
-	endif
-endif
+"if &t_Co >= 256 || has("gui_running")
+	"if has("gui_running")
+		"colorscheme monokai
+	"else
+		"colorscheme darkspectrum
+	"endif
+"endif
+syntax enable
+set background=dark
+colorscheme solarized
 
 if &t_Co > 2 || has("gui_running")
 	" switch syntax highlighting on, when the terminal has colors

@@ -52,3 +52,6 @@
 [submodule "bundle/greplace"]
 	path = bundle/greplace
 	url = https://github.com/vim-scripts/greplace.vim.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
