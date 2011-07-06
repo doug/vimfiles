@@ -224,19 +224,44 @@ if v:version >= 703
 endif
 
 "indent settings
+set expandtab
 set shiftwidth=2
 set softtabstop=2
-set tabstop=4
+set tabstop=2
 set shiftround " use multiple of shiftwidth when indenting with '<' or '>'
 set smarttab " insert tabs on start of line according to shiftwidth not tabstop
-set expandtab
 set autoindent " set auto-indenting on for programming
 set copyindent " copy previous indentation on autoindenting
 
+function! Spacing(tabs, size)
+	execute "set shiftwidth=".a:size."\nset softtabstop=".a:size."\nset tabstop=".a:size
+	if a:tabs
+		set noexpandtab
+	else
+		set expandtab
+	endif
+endfunction
+
+function! Tabs(size)
+	call Spacing(1, a:size)
+endfunction
+
+function! Spaces(size)
+	call Spacing(0, a:size)
+endfunction
+
+"Omnicompletion with ctrl-space
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+\ "\<lt>C-n>" :
+\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
+
 "folding settings
 set foldmethod=indent   "fold based on indent
-set foldnestmax=3	   "deepest fold is 3 levels
-set nofoldenable		"dont fold by default
+set foldnestmax=3	"deepest fold is 3 levels
+set nofoldenable	"dont fold by default
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu				"enable ctrl-n and ctrl-p to scroll thru matches
@@ -282,7 +307,8 @@ if !has("gui")
 endif
 
 if has("gui_running")
-  set guifont=Replica-Mono\ 10
+  " Download from http://www.google.com/webfonts/download?kit=AoqDo8EPffat6Blizo0-XIfYGaZajvNcRmAagyCNG_U
+  set guifont=Anonymous\ Pro:h12
 endif
 
 
