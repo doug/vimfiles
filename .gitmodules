@@ -58,3 +58,9 @@
 [submodule "bundle/gocode"]
 	path = bundle/gocode
 	url = git@github.com:doug/gocode.git
+[submodule "bundle/VikiDeplate"]
+	path = bundle/VikiDeplate
+	url = https://github.com/vim-scripts/VikiDeplate.git
+[submodule "bundle/tlib"]
+	path = bundle/tlib
+	url = https://github.com/vim-scripts/tlib.git
