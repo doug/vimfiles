@@ -55,6 +55,3 @@
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/gocode"]
-	path = bundle/gocode
-	url = git@github.com:doug/gocode.git
