@@ -233,6 +233,12 @@ set smarttab " insert tabs on start of line according to shiftwidth not tabstop
 set autoindent " set auto-indenting on for programming
 set copyindent " copy previous indentation on autoindenting
 
+
+" indentations for specific file types
+" Go Language
+autocmd FileType go :setlocal noexpandtab sw=2 ts=2 sts=2 " Two spaces real tab for Go files "
+
+
 function! Spacing(tabs, size)
 	execute "set shiftwidth=".a:size."\nset softtabstop=".a:size."\nset tabstop=".a:size
 	if a:tabs
@@ -586,3 +592,5 @@ set pastetoggle=<F2>
 
 " rerun last command
 nmap <c-b> 1@:
+
+
