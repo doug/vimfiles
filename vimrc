@@ -286,7 +286,6 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
 	"autocmd filetype html,xml set listchars-=tab:>.
 "endif
 
-
 set formatoptions-=o "dont continue comments when pushing o/O
 
 "vertical/horizontal scroll off settings
@@ -412,7 +411,7 @@ nnoremap <c-n> :NERDTreeToggle<CR>
 
 " filetype plugin
 filetype plugin on
-filetype plugin indent on
+filetype indent on
 "if has('autocmd')
 	"autocmd filetype python set expandtab
 "endif
