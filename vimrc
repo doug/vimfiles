@@ -312,8 +312,17 @@ if !has("gui")
 endif
 
 if has("gui_running")
+  if has("macunix")
+    "set guifont=Monaco:h11
+    set guifont=Anonymous\ Pro:h10
+  else
+    "set guifont=Andale\ Mono\ 11
+    set guifont=Anonymous\ Pro\ 11
+  endif
   " Download from http://www.google.com/webfonts/download?kit=AoqDo8EPffat6Blizo0-XIfYGaZajvNcRmAagyCNG_U
-  set guifont=Anonymous\ Pro:h12
+  "set guifont=Anonymous\ Pro:h11
+  " windows
+  " set guifont=Andale_Mono:h11
 endif
 
 
