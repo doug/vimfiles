@@ -314,7 +314,7 @@ endif
 if has("gui_running")
   if has("macunix")
     "set guifont=Monaco:h11
-    set guifont=Anonymous\ Pro:h10
+    set guifont=Anonymous\ Pro:h12
   else
     "set guifont=Andale\ Mono\ 11
     set guifont=Anonymous\ Pro\ 11
