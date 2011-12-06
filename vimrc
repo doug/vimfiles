@@ -238,7 +238,6 @@ set copyindent " copy previous indentation on autoindenting
 " Go Language
 autocmd FileType go :setlocal noexpandtab sw=2 ts=2 sts=2 " Two spaces real tab for Go files "
 
-
 function! Spacing(tabs, size)
 	execute "set shiftwidth=".a:size."\nset softtabstop=".a:size."\nset tabstop=".a:size
 	if a:tabs
@@ -577,9 +576,6 @@ map! <C-A> <C-O>^
 map <C-E> $
 map! <C-E> <C-O>$
 
-" Quick open with command-t
-map <c-f> :CommandT<CR>
-
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
@@ -593,7 +589,7 @@ nnoremap k gk
 nmap <silent> // :nohlsearch<CR>
 
 " sparkup next shouldn't conflict with nerdtree
-let g:sparkupNextMapping = '<nop>'
+let g:sparkupNextMapping = '<c-m>'
 
 " paste toggle so it just pastes raw text
 set pastetoggle=<F2>
