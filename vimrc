@@ -378,10 +378,10 @@ endif
 
 " Extra DEFS and bindings
 
-let mapleader = ";"
-let g:mapleader = ";"
-let maplocalleader=";"
-let g:maplocalleader=";"
+let mapleader = ","
+let g:mapleader = ","
+let maplocalleader=","
+let g:maplocalleader=","
 
 " Ignore ruby warning in lusty juggler
 let g:LustyJugglerSuppressRubyWarning = 1
