@@ -88,6 +88,7 @@ nnoremap <silent> <C-t> :tabnew<CR>
 
 " This is totally awesome - remap jj to escape in insert mode.	You'll never type jj anyway, so it's great!
 inoremap jj <Esc>
+inoremap kk <Esc>
 
 
 "recalculate the trailing whitespace warning when idle, and after saving
