@@ -28,9 +28,6 @@
 [submodule "bundle/coffee-script"]
 	path = bundle/coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = git://git.wincent.com/command-t.git
 [submodule "bundle/vim-sparkup"]
 	path = bundle/vim-sparkup
 	url = http://github.com/bingaman/vim-sparkup.git

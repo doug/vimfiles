@@ -1,7 +1,7 @@
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
 set nocompatible " use vim defaults
-set scrolloff=3  " keep 3 lines when scrolling
+set scrolloff=3	" keep 3 lines when scrolling
 
 "Use pathogen to load all bundles
 call pathogen#runtime_append_all_bundles()
@@ -21,8 +21,8 @@ set incsearch	"find the next match as we type the search
 set hlsearch	"hilight searches by default
 set showmatch	" show matching parenthesis
 
-set nowrap	  "don't wrap lines
-set linebreak   "wrap lines at convenient points
+set nowrap		"don't wrap lines
+set linebreak	 "wrap lines at convenient points
 
 " This isn't the 70s no more backup and swp files
 set noswapfile
@@ -31,7 +31,7 @@ set nobackup
 set number " show line numbers
 
 "statusline setup
-set statusline=%f	   "tail of the filename
+set statusline=%f		 "tail of the filename
 
 "display a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
@@ -43,10 +43,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
 set statusline+=%*
 
-set statusline+=%h	  "help file flag
-set statusline+=%y	  "filetype
-set statusline+=%r	  "read only flag
-set statusline+=%m	  "modified flag
+set statusline+=%h		"help file flag
+set statusline+=%y		"filetype
+set statusline+=%r		"read only flag
+set statusline+=%m		"modified flag
 
 "display a warning if &et is wrong, or we have mixed-indenting
 set statusline+=%#error#
@@ -62,10 +62,10 @@ set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
 
-set statusline+=%=	  "left/right separator
+set statusline+=%=		"left/right separator
 set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
 set statusline+=%c,	 "cursor column
-set statusline+=%l/%L   "cursor line/total lines
+set statusline+=%l/%L	 "cursor line/total lines
 set statusline+=\ %P	"percent through file
 set laststatus=2
 
@@ -86,7 +86,7 @@ nnoremap <silent> <C-Left> :tabprevious<CR>
 " New Tab
 nnoremap <silent> <C-t> :tabnew<CR>
 
-" This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
+" This is totally awesome - remap jj to escape in insert mode.	You'll never type jj anyway, so it's great!
 inoremap jj <Esc>
 
 
@@ -143,7 +143,7 @@ function! StatuslineTabWarning()
 		let spaces = search('^ \{' . &ts . ',}[^\t]', 'nw') != 0
 
 		if tabs && spaces
-			let b:statusline_tab_warning =  '[mixed-indenting]'
+			let b:statusline_tab_warning =	'[mixed-indenting]'
 		elseif (spaces && !&et) || (tabs && &et)
 			let b:statusline_tab_warning = '[&et]'
 		endif
@@ -265,11 +265,11 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 imap <C-@> <C-Space>
 
 "folding settings
-set foldmethod=indent   "fold based on indent
+set foldmethod=indent	 "fold based on indent
 set foldnestmax=3	"deepest fold is 3 levels
 set nofoldenable	"dont fold by default
 
-set wildmode=list:longest   "make cmdline tab completion similar to bash
+set wildmode=list:longest	 "make cmdline tab completion similar to bash
 set wildmenu				"enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~,*.swp,*.bak,*.pyc,*.class "stuff to ignore when tab completing
 
@@ -300,29 +300,26 @@ syntax on
 set mouse=a
 set ttymouse=xterm2
 
-"tell the term has 256 colors
-set t_Co=256
-
 "hide buffers when not displayed instead of closing them
 set hidden
 
 "dont load csapprox if we no gui support - silences an annoying warning
 if !has("gui")
-  let g:CSApprox_loaded = 1
+	let g:CSApprox_loaded = 1
 endif
 
 if has("gui_running")
-  if has("macunix")
-    "set guifont=Monaco:h11
-    set guifont=Anonymous\ Pro:h12
-  else
-    "set guifont=Andale\ Mono\ 11
-    set guifont=Anonymous\ Pro\ 11
-  endif
-  " Download from http://www.google.com/webfonts/download?kit=AoqDo8EPffat6Blizo0-XIfYGaZajvNcRmAagyCNG_U
-  "set guifont=Anonymous\ Pro:h11
-  " windows
-  " set guifont=Andale_Mono:h11
+	if has("macunix")
+		"set guifont=Monaco:h11
+		set guifont=Anonymous\ Pro:h12
+	else
+		"set guifont=Andale\ Mono\ 11
+		set guifont=Anonymous\ Pro\ 11
+	endif
+	" Download from http://www.google.com/webfonts/download?kit=AoqDo8EPffat6Blizo0-XIfYGaZajvNcRmAagyCNG_U
+	"set guifont=Anonymous\ Pro:h11
+	" windows
+	" set guifont=Andale_Mono:h11
 endif
 
 
@@ -374,8 +371,8 @@ endfunction
 " spelling...
 if v:version >= 700
 
-  setlocal spell spelllang=en
-  nmap <LocalLeader>ss :set spell!<CR>
+	setlocal spell spelllang=en
+	nmap <LocalLeader>ss :set spell!<CR>
 
 endif
 
@@ -392,7 +389,7 @@ let g:LustyJugglerSuppressRubyWarning = 1
 map Y y$
 " for yankring to work with previous mapping:
 function! YRRunAfterMaps()
-	nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+	nnoremap Y	 :<C-U>YRYankCount 'y$'<CR>
 endfunction
 " toggle list mode
 nmap <LocalLeader>tl :set list!<cr>
@@ -405,11 +402,11 @@ nmap <LocalLeader>lcd :lcd%:p:h<cr>
 " correct type-o's on exit
 nmap q: :q
 " save and build
-nmap <LocalLeader>wm  :w<cr>:make<cr>
+nmap <LocalLeader>wm	:w<cr>:make<cr>
 " open all folds
-nmap <LocalLeader>fo  :%foldopen!<cr>
+nmap <LocalLeader>fo	:%foldopen!<cr>
 " close all folds
-nmap <LocalLeader>fc  :%foldclose!<cr>
+nmap <LocalLeader>fc	:%foldclose!<cr>
 
 " If I forgot to sudo vim a file, do that with :w!!
 " SUPERSAVE
@@ -477,6 +474,9 @@ vmap <S-Down> j
 vmap <S-Left> h
 vmap <S-Right> l
 
+"tell the term has 256 colors
+set t_Co=256
+
 " Use the monokai color scheme
 "if &t_Co >= 256 || has("gui_running")
 	"if has("gui_running")
@@ -499,8 +499,8 @@ if &t_Co > 2 || has("gui_running")
 	let g:solarized_termcolors=256
 endif
 
-set ignorecase		  " case-insensitive search
-set smartcase		   " upper-case sensitive search
+set ignorecase			" case-insensitive search
+set smartcase			 " upper-case sensitive search
 
 
 set textwidth=100
@@ -560,7 +560,7 @@ map <C-l> <C-w>l
 
 
 "Pretty format JSON
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+map <leader>jt	<Esc>:%!json_xs -f json -t json-pretty<CR>
 
 "Open in browser with cmd-enter
 if has("macunix")
