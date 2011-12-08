@@ -90,6 +90,12 @@ nnoremap <silent> <C-t> :tabnew<CR>
 inoremap jj <Esc>
 inoremap kk <Esc>
 
+" Make resizing split windows easier TODO: doesn't seem to work
+nmap <C-Left> :vertical resize -2<CR>
+nmap <C-Right> :vertical resize +2<CR>
+nmap <C-Up> :resize +2<CR>
+nmap <C-Down> :resize -2<CR>
+
 
 "recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
@@ -503,8 +509,10 @@ set ignorecase			" case-insensitive search
 set smartcase			 " upper-case sensitive search
 
 
-set textwidth=100
+set textwidth=80
 highlight ColorColumn ctermbg=black guibg=#444444
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 " Map switching tabs to cmd-1,2,3, etc like TextMate
 if has("macunix")
