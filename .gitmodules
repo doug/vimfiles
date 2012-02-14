@@ -52,3 +52,6 @@
 [submodule "bundle/vim-proto"]
 	path = bundle/vim-proto
 	url = https://github.com/garyharan/vim-proto.git
+[submodule "bundle/dart"]
+	path = bundle/dart
+	url = https://github.com/bartekd/vim-dart.git
