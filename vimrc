@@ -480,16 +480,17 @@ vmap <S-Right> l
 set t_Co=256
 
 " Use the monokai color scheme
-"if &t_Co >= 256 || has("gui_running")
-	"if has("gui_running")
-		"colorscheme monokai
-	"else
-		"colorscheme darkspectrum
-	"endif
-"endif
+if &t_Co >= 256 || has("gui_running")
+  if has("gui_running")
+    colorscheme monokai
+  else
+    colorscheme solarized
+    "colorscheme darkspectrum
+  endif
+endif
 syntax enable
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 "let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 "let g:solarized_contrast="high"
