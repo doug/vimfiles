@@ -283,7 +283,7 @@ set noerrorbells
 
 "display tabs and trailing spaces
 set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
+"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
 "if has('autocmd')
 	"autocmd filetype html,xml set listchars-=tab:>.
 "endif
