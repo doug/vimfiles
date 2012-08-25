@@ -55,3 +55,9 @@
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "bundle/golang"]
+	path = bundle/golang
+	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "bundle/rubycomplete"]
+	path = bundle/rubycomplete
+	url = https://github.com/vim-scripts/rubycomplete.vim.git

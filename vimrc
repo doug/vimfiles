@@ -488,7 +488,7 @@ if &t_Co >= 256 || has("gui_running")
     "colorscheme darkspectrum
   endif
 endif
-syntax enable
+syntax on
 set background=dark
 "colorscheme solarized
 "let g:solarized_termcolors=256
@@ -603,4 +603,6 @@ set pastetoggle=<F2>
 " rerun last command
 nmap <c-b> 1@:
 
-
+" SuperTab use context to prefer omnifunc when possible
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
