@@ -606,3 +606,6 @@ nmap <c-b> 1@:
 " SuperTab use context to prefer omnifunc when possible
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+
+" Syntastic configuration variables
+let g:syntastic_python_checker_args="--indent-string='  '"
