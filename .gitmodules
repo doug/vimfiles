@@ -64,3 +64,6 @@
 [submodule "bundle/EasyMotion"]
 	path = bundle/EasyMotion
 	url = https://github.com/vim-scripts/EasyMotion.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround.git
