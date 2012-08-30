@@ -84,7 +84,7 @@ nnoremap <silent> <C-Right> :tabnext<CR>
 nnoremap <silent> <C-Left> :tabprevious<CR>
 
 " New Tab
-nnoremap <silent> <C-t> :tabnew<CR>
+" nnoremap <silent> <C-t> :tabnew<CR>
 
 " This is totally awesome - remap jj to escape in insert mode.	You'll never type jj anyway, so it's great!
 inoremap jj <Esc>
@@ -603,9 +603,35 @@ set pastetoggle=<F2>
 " rerun last command
 nmap <c-b> 1@:
 
+" TagbarToggle
+map <C-t> :TagbarToggle<CR>
+
 " SuperTab use context to prefer omnifunc when possible
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 " Syntastic configuration variables
 let g:syntastic_python_checker_args="--indent-string='  '"
+
+" OmnicompleteCpp
+set tags+=~/.vim/tags/stl
+" -- optional --
+" auto close options when exiting insert mode or moving away
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" set completeopt=menu,menuone
+
+" -- configs --
+let OmniCpp_MayCompleteDot = 0 " autocomplete with .
+let OmniCpp_MayCompleteArrow = 0 " autocomplete with ->
+let OmniCpp_MayCompleteScope = 0 " autocomplete with ::
+let OmniCpp_SelectFirstItem = 0 " don't select first item
+let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
+let OmniCpp_LocalSearchDecl = 1 " don't require special style of function opening braces
+
+" -- ctags --
+" map <ctrl>+F12 to generate ctags for current folder:
+map <C-x><C-t> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+" add current directory's generated tags file to available tags
+set tags+=./tags
