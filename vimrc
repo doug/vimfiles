@@ -635,3 +635,5 @@ let g:clang_use_library = 1
 " Complete options (disable preview scratch window)
 set completeopt=menu,menuone,longest
 
+" vim-g open with vim
+let g:vim_g_open_command = "open"
