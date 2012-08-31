@@ -313,10 +313,12 @@ endif
 if has("gui_running")
   if has("macunix")
     "set guifont=Monaco:h11
-    set guifont=Anonymous\ Pro:h12
+    " set guifont=Anonymous\ Pro:h12
+    set guifont=Inconsolata:h12
   else
     "set guifont=Andale\ Mono\ 11
-    set guifont=Anonymous\ Pro\ 11
+    " set guifont=Anonymous\ Pro\ 12
+    set guifont=Inconsolata\ 12
   endif
   " Download from http://www.google.com/webfonts/download?kit=AoqDo8EPffat6Blizo0-XIfYGaZajvNcRmAagyCNG_U
   "set guifont=Anonymous\ Pro:h11
@@ -613,6 +615,23 @@ let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 " Syntastic configuration variables
 let g:syntastic_python_checker_args="--indent-string='  '"
 
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['python', 'ruby'],
+                           \ 'passive_filetypes': ['java'] }
+" let clang_complete and syntastic use the same file
+let g:syntastic_cpp_config_file = '.clang_complete'
+
+" Clang_complete config
 let g:clang_use_library = 1
 
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['java'] }
+ " SuperTab option for context aware completion
+ let g:SuperTabDefaultCompletionType = "context"
+
+ " Disable auto popup, use <Tab> to autocomplete
+ let g:clang_complete_auto = 0
+ " Show clang errors in the quickfix window
+ let g:clang_complete_copen = 1
+
+" Complete options (disable preview scratch window)
+set completeopt=menu,menuone,longest
+
