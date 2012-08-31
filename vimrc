@@ -1,7 +1,7 @@
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
 set nocompatible " use vim defaults
-set scrolloff=3	" keep 3 lines when scrolling
+set scrolloff=3  " keep 3 lines when scrolling
 
 "Use pathogen to load all bundles
 call pathogen#runtime_append_all_bundles()
@@ -14,15 +14,15 @@ set history=1000
 "lots of undo
 set undolevels=1000
 
-set showcmd	 "show incomplete cmds down the bottom
-set showmode	"show current mode down the bottom
+set showcmd   "show incomplete cmds down the bottom
+set showmode  "show current mode down the bottom
 
-set incsearch	"find the next match as we type the search
-set hlsearch	"hilight searches by default
-set showmatch	" show matching parenthesis
+set incsearch  "find the next match as we type the search
+set hlsearch  "hilight searches by default
+set showmatch  " show matching parenthesis
 
-set nowrap		"don't wrap lines
-set linebreak	 "wrap lines at convenient points
+set nowrap    "don't wrap lines
+set linebreak   "wrap lines at convenient points
 
 " This isn't the 70s no more backup and swp files
 set noswapfile
@@ -31,7 +31,7 @@ set nobackup
 set number " show line numbers
 
 "statusline setup
-set statusline=%f		 "tail of the filename
+set statusline=%f     "tail of the filename
 
 "display a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
@@ -43,10 +43,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
 set statusline+=%*
 
-set statusline+=%h		"help file flag
-set statusline+=%y		"filetype
-set statusline+=%r		"read only flag
-set statusline+=%m		"modified flag
+set statusline+=%h    "help file flag
+set statusline+=%y    "filetype
+set statusline+=%r    "read only flag
+set statusline+=%m    "modified flag
 
 "display a warning if &et is wrong, or we have mixed-indenting
 set statusline+=%#error#
@@ -62,11 +62,11 @@ set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
 
-set statusline+=%=		"left/right separator
+set statusline+=%=    "left/right separator
 set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
-set statusline+=%c,	 "cursor column
-set statusline+=%l/%L	 "cursor line/total lines
-set statusline+=\ %P	"percent through file
+set statusline+=%c,   "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P  "percent through file
 set laststatus=2
 
 " Search mappings: These will make it so that going to the next one in a
@@ -86,7 +86,7 @@ nnoremap <silent> <C-Left> :tabprevious<CR>
 " New Tab
 " nnoremap <silent> <C-t> :tabnew<CR>
 
-" This is totally awesome - remap jj to escape in insert mode.	You'll never type jj anyway, so it's great!
+" This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
 inoremap jj <Esc>
 inoremap kk <Esc>
 
@@ -103,31 +103,31 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 "return '[\s]' if trailing white space is detected
 "return '' otherwise
 function! StatuslineTrailingSpaceWarning()
-	if !exists("b:statusline_trailing_space_warning")
+  if !exists("b:statusline_trailing_space_warning")
 
-		if !&modifiable
-			let b:statusline_trailing_space_warning = ''
-			return b:statusline_trailing_space_warning
-		endif
+    if !&modifiable
+      let b:statusline_trailing_space_warning = ''
+      return b:statusline_trailing_space_warning
+    endif
 
-		if search('\s\+$', 'nw') != 0
-			let b:statusline_trailing_space_warning = '[\s]'
-		else
-			let b:statusline_trailing_space_warning = ''
-		endif
-	endif
-	return b:statusline_trailing_space_warning
+    if search('\s\+$', 'nw') != 0
+      let b:statusline_trailing_space_warning = '[\s]'
+    else
+      let b:statusline_trailing_space_warning = ''
+    endif
+  endif
+  return b:statusline_trailing_space_warning
 endfunction
 
 
 "return the syntax highlight group under the cursor ''
 function! StatuslineCurrentHighlight()
-	let name = synIDattr(synID(line('.'),col('.'),1),'name')
-	if name == ''
-		return ''
-	else
-		return '[' . name . ']'
-	endif
+  let name = synIDattr(synID(line('.'),col('.'),1),'name')
+  if name == ''
+    return ''
+  else
+    return '[' . name . ']'
+  endif
 endfunction
 
 "recalculate the tab warning flag when idle and after writing
@@ -137,25 +137,25 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
 "return '[mixed-indenting]' if spaces and tabs are used to indent
 "return an empty string if everything is fine
 function! StatuslineTabWarning()
-	if !exists("b:statusline_tab_warning")
-		let b:statusline_tab_warning = ''
+  if !exists("b:statusline_tab_warning")
+    let b:statusline_tab_warning = ''
 
-		if !&modifiable
-			return b:statusline_tab_warning
-		endif
+    if !&modifiable
+      return b:statusline_tab_warning
+    endif
 
-		let tabs = search('^\t', 'nw') != 0
+    let tabs = search('^\t', 'nw') != 0
 
-		"find spaces that arent used as alignment in the first indent column
-		let spaces = search('^ \{' . &ts . ',}[^\t]', 'nw') != 0
+    "find spaces that arent used as alignment in the first indent column
+    let spaces = search('^ \{' . &ts . ',}[^\t]', 'nw') != 0
 
-		if tabs && spaces
-			let b:statusline_tab_warning =	'[mixed-indenting]'
-		elseif (spaces && !&et) || (tabs && &et)
-			let b:statusline_tab_warning = '[&et]'
-		endif
-	endif
-	return b:statusline_tab_warning
+    if tabs && spaces
+      let b:statusline_tab_warning =  '[mixed-indenting]'
+    elseif (spaces && !&et) || (tabs && &et)
+      let b:statusline_tab_warning = '[&et]'
+    endif
+  endif
+  return b:statusline_tab_warning
 endfunction
 
 "recalculate the long line warning when idle and after saving
@@ -169,65 +169,65 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 "lines, y is the median length of the long lines and z is the length of the
 "longest line
 function! StatuslineLongLineWarning()
-	if !exists("b:statusline_long_line_warning")
+  if !exists("b:statusline_long_line_warning")
 
-		if !&modifiable
-			let b:statusline_long_line_warning = ''
-			return b:statusline_long_line_warning
-		endif
+    if !&modifiable
+      let b:statusline_long_line_warning = ''
+      return b:statusline_long_line_warning
+    endif
 
-		let long_line_lens = s:LongLines()
+    let long_line_lens = s:LongLines()
 
-		if len(long_line_lens) > 0
-			let b:statusline_long_line_warning = "[" .
-						\ '#' . len(long_line_lens) . "," .
-						\ 'm' . s:Median(long_line_lens) . "," .
-						\ '$' . max(long_line_lens) . "]"
-		else
-			let b:statusline_long_line_warning = ""
-		endif
-	endif
-	return b:statusline_long_line_warning
+    if len(long_line_lens) > 0
+      let b:statusline_long_line_warning = "[" .
+            \ '#' . len(long_line_lens) . "," .
+            \ 'm' . s:Median(long_line_lens) . "," .
+            \ '$' . max(long_line_lens) . "]"
+    else
+      let b:statusline_long_line_warning = ""
+    endif
+  endif
+  return b:statusline_long_line_warning
 endfunction
 
 "return a list containing the lengths of the long lines in this buffer
 function! s:LongLines()
-	let threshold = (&tw ? &tw : 80)
-	let spaces = repeat(" ", &ts)
+  let threshold = (&tw ? &tw : 80)
+  let spaces = repeat(" ", &ts)
 
-	let long_line_lens = []
+  let long_line_lens = []
 
-	let i = 1
-	while i <= line("$")
-		let len = strlen(substitute(getline(i), '\t', spaces, 'g'))
-		if len > threshold
-			call add(long_line_lens, len)
-		endif
-		let i += 1
-	endwhile
+  let i = 1
+  while i <= line("$")
+    let len = strlen(substitute(getline(i), '\t', spaces, 'g'))
+    if len > threshold
+      call add(long_line_lens, len)
+    endif
+    let i += 1
+  endwhile
 
-	return long_line_lens
+  return long_line_lens
 endfunction
 
 "find the median of the given array of numbers
 function! s:Median(nums)
-	let nums = sort(a:nums)
-	let l = len(nums)
+  let nums = sort(a:nums)
+  let l = len(nums)
 
-	if l % 2 == 1
-		let i = (l-1) / 2
-		return nums[i]
-	else
-		return (nums[l/2] + nums[(l/2)-1]) / 2
-	endif
+  if l % 2 == 1
+    let i = (l-1) / 2
+    return nums[i]
+  else
+    return (nums[l/2] + nums[(l/2)-1]) / 2
+  endif
 endfunction
 
 if v:version >= 703
-	"undo settings
-	set undodir=~/.vim/undofiles
-	set undofile
+  "undo settings
+  set undodir=~/.vim/undofiles
+  set undofile
 
-	set colorcolumn=+1
+  set colorcolumn=+1
 endif
 
 "indent settings
@@ -242,20 +242,20 @@ set copyindent " copy previous indentation on autoindenting
 
 
 function! Spacing(tabs, size)
-	execute "set shiftwidth=".a:size."\nset softtabstop=".a:size."\nset tabstop=".a:size
-	if a:tabs
-		set noexpandtab
-	else
-		set expandtab
-	endif
+  execute "set shiftwidth=".a:size."\nset softtabstop=".a:size."\nset tabstop=".a:size
+  if a:tabs
+    set noexpandtab
+  else
+    set expandtab
+  endif
 endfunction
 
 function! Tabs(size)
-	call Spacing(1, a:size)
+  call Spacing(1, a:size)
 endfunction
 
 function! Spaces(size)
-	call Spacing(0, a:size)
+  call Spacing(0, a:size)
 endfunction
 
 "Omnicompletion with ctrl-space
@@ -267,12 +267,12 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 imap <C-@> <C-Space>
 
 "folding settings
-set foldmethod=indent	 "fold based on indent
-set foldnestmax=3	"deepest fold is 3 levels
-set nofoldenable	"dont fold by default
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3  "deepest fold is 3 levels
+set nofoldenable  "dont fold by default
 
-set wildmode=list:longest	 "make cmdline tab completion similar to bash
-set wildmenu				"enable ctrl-n and ctrl-p to scroll thru matches
+set wildmode=list:longest   "make cmdline tab completion similar to bash
+set wildmenu        "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~,*.swp,*.bak,*.pyc,*.class "stuff to ignore when tab completing
 
 set title "change the terminal's title
@@ -285,7 +285,7 @@ set noerrorbells
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
 "if has('autocmd')
-	"autocmd filetype html,xml set listchars-=tab:>.
+  "autocmd filetype html,xml set listchars-=tab:>.
 "endif
 
 set formatoptions-=o "dont continue comments when pushing o/O
@@ -307,21 +307,21 @@ set hidden
 
 "dont load csapprox if we no gui support - silences an annoying warning
 if !has("gui")
-	let g:CSApprox_loaded = 1
+  let g:CSApprox_loaded = 1
 endif
 
 if has("gui_running")
-	if has("macunix")
-		"set guifont=Monaco:h11
-		set guifont=Anonymous\ Pro:h12
-	else
-		"set guifont=Andale\ Mono\ 11
-		set guifont=Anonymous\ Pro\ 11
-	endif
-	" Download from http://www.google.com/webfonts/download?kit=AoqDo8EPffat6Blizo0-XIfYGaZajvNcRmAagyCNG_U
-	"set guifont=Anonymous\ Pro:h11
-	" windows
-	" set guifont=Andale_Mono:h11
+  if has("macunix")
+    "set guifont=Monaco:h11
+    set guifont=Anonymous\ Pro:h12
+  else
+    "set guifont=Andale\ Mono\ 11
+    set guifont=Anonymous\ Pro\ 11
+  endif
+  " Download from http://www.google.com/webfonts/download?kit=AoqDo8EPffat6Blizo0-XIfYGaZajvNcRmAagyCNG_U
+  "set guifont=Anonymous\ Pro:h11
+  " windows
+  " set guifont=Andale_Mono:h11
 endif
 
 
@@ -337,10 +337,10 @@ nnoremap Y y$
 
 "visual search mappings
 function! s:VSetSearch()
-	let temp = @@
-	norm! gvy
-	let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-	let @@ = temp
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @@ = temp
 endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
@@ -350,31 +350,31 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 "dont do it when writing a commit log entry
 autocmd BufReadPost * call SetCursorPosition()
 function! SetCursorPosition()
-	if &filetype !~ 'svn\|commit\c'
-		if line("'\"") > 0 && line("'\"") <= line("$")
-			exe "normal! g`\""
-			normal! zz
-		endif
-	end
+  if &filetype !~ 'svn\|commit\c'
+    if line("'\"") > 0 && line("'\"") <= line("$")
+      exe "normal! g`\""
+      normal! zz
+    endif
+  end
 endfunction
 
 "define :HighlightLongLines command to highlight the offending parts of
 "lines that are longer than the specified length (defaulting to 80)
 command! -nargs=? HighlightLongLines call s:HighlightLongLines('<args>')
 function! s:HighlightLongLines(width)
-	let targetWidth = a:width != '' ? a:width : 79
-	if targetWidth > 0
-		exec 'match Todo /\%>' . (targetWidth) . 'v/'
-	else
-		echomsg "Usage: HighlightLongLines [natural number]"
-	endif
+  let targetWidth = a:width != '' ? a:width : 79
+  if targetWidth > 0
+    exec 'match Todo /\%>' . (targetWidth) . 'v/'
+  else
+    echomsg "Usage: HighlightLongLines [natural number]"
+  endif
 endfunction
 
 " spelling...
 if v:version >= 700
 
-	setlocal spell spelllang=en
-	nmap <LocalLeader>ss :set spell!<CR>
+  setlocal spell spelllang=en
+  nmap <LocalLeader>ss :set spell!<CR>
 
 endif
 
@@ -391,7 +391,7 @@ let g:LustyJugglerSuppressRubyWarning = 1
 map Y y$
 " for yankring to work with previous mapping:
 function! YRRunAfterMaps()
-	nnoremap Y	 :<C-U>YRYankCount 'y$'<CR>
+  nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
 endfunction
 " toggle list mode
 nmap <LocalLeader>tl :set list!<cr>
@@ -404,11 +404,11 @@ nmap <LocalLeader>lcd :lcd%:p:h<cr>
 " correct type-o's on exit
 nmap q: :q
 " save and build
-nmap <LocalLeader>wm	:w<cr>:make<cr>
+nmap <LocalLeader>wm  :w<cr>:make<cr>
 " open all folds
-nmap <LocalLeader>fo	:%foldopen!<cr>
+nmap <LocalLeader>fo  :%foldopen!<cr>
 " close all folds
-nmap <LocalLeader>fc	:%foldclose!<cr>
+nmap <LocalLeader>fc  :%foldclose!<cr>
 
 " If I forgot to sudo vim a file, do that with :w!!
 " SUPERSAVE
@@ -421,7 +421,7 @@ nnoremap <c-n> :NERDTreeToggle<CR>
 filetype plugin on
 filetype indent on
 "if has('autocmd')
-	"autocmd filetype python set expandtab
+  "autocmd filetype python set expandtab
 "endif
 
 " Fast saving
@@ -442,13 +442,13 @@ nnoremap <c-k> <PageUp>
 
 " Copy and Paste
 if has("macunix")
-	nmap <D-V> "+gP
-	imap <D-V> <ESC><C-V>a
-	vmap <D-C> "+y
+  nmap <D-V> "+gP
+  imap <D-V> <ESC><C-V>a
+  vmap <D-C> "+y
 else
-	nmap <C-V> "+gP
-	imap <C-V> <ESC><C-V>a
-	vmap <C-C> "+y
+  nmap <C-V> "+gP
+  imap <C-V> <ESC><C-V>a
+  vmap <C-C> "+y
 endif
 
 " remove trailing whitespace
@@ -497,13 +497,13 @@ let g:solarized_termtrans=1
 "let g:solarized_visibility="high"
 
 if &t_Co > 2 || has("gui_running")
-	" switch syntax highlighting on, when the terminal has colors
-	syntax on
-	let g:solarized_termcolors=256
+  " switch syntax highlighting on, when the terminal has colors
+  syntax on
+  let g:solarized_termcolors=256
 endif
 
-set ignorecase			" case-insensitive search
-set smartcase			 " upper-case sensitive search
+set ignorecase      " case-insensitive search
+set smartcase       " upper-case sensitive search
 
 
 set textwidth=80
@@ -513,43 +513,43 @@ match OverLength /\%81v.\+/
 
 " Map switching tabs to cmd-1,2,3, etc like TextMate
 if has("macunix")
-	map <D-1> :tabn 1<CR>
-	map <D-2> :tabn 2<CR>
-	map <D-3> :tabn 3<CR>
-	map <D-4> :tabn 4<CR>
-	map <D-5> :tabn 5<CR>
-	map <D-6> :tabn 6<CR>
-	map <D-7> :tabn 7<CR>
-	map <D-8> :tabn 8<CR>
-	map <D-9> :tabn 9<CR>
-	map! <D-1> <C-O>:tabn 1<CR>
-	map! <D-2> <C-O>:tabn 2<CR>
-	map! <D-3> <C-O>:tabn 3<CR>
-	map! <D-4> <C-O>:tabn 4<CR>
-	map! <D-5> <C-O>:tabn 5<CR>
-	map! <D-6> <C-O>:tabn 6<CR>
-	map! <D-7> <C-O>:tabn 7<CR>
-	map! <D-8> <C-O>:tabn 8<CR>
-	map! <D-9> <C-O>:tabn 9<CR>
+  map <D-1> :tabn 1<CR>
+  map <D-2> :tabn 2<CR>
+  map <D-3> :tabn 3<CR>
+  map <D-4> :tabn 4<CR>
+  map <D-5> :tabn 5<CR>
+  map <D-6> :tabn 6<CR>
+  map <D-7> :tabn 7<CR>
+  map <D-8> :tabn 8<CR>
+  map <D-9> :tabn 9<CR>
+  map! <D-1> <C-O>:tabn 1<CR>
+  map! <D-2> <C-O>:tabn 2<CR>
+  map! <D-3> <C-O>:tabn 3<CR>
+  map! <D-4> <C-O>:tabn 4<CR>
+  map! <D-5> <C-O>:tabn 5<CR>
+  map! <D-6> <C-O>:tabn 6<CR>
+  map! <D-7> <C-O>:tabn 7<CR>
+  map! <D-8> <C-O>:tabn 8<CR>
+  map! <D-9> <C-O>:tabn 9<CR>
 else
-	map <C-1> :tabn 1<CR>
-	map <C-2> :tabn 2<CR>
-	map <C-3> :tabn 3<CR>
-	map <C-4> :tabn 4<CR>
-	map <C-5> :tabn 5<CR>
-	map <C-6> :tabn 6<CR>
-	map <C-7> :tabn 7<CR>
-	map <C-8> :tabn 8<CR>
-	map <C-9> :tabn 9<CR>
-	map! <C-1> <C-O>:tabn 1<CR>
-	map! <C-2> <C-O>:tabn 2<CR>
-	map! <C-3> <C-O>:tabn 3<CR>
-	map! <C-4> <C-O>:tabn 4<CR>
-	map! <C-5> <C-O>:tabn 5<CR>
-	map! <C-6> <C-O>:tabn 6<CR>
-	map! <C-7> <C-O>:tabn 7<CR>
-	map! <C-8> <C-O>:tabn 8<CR>
-	map! <C-9> <C-O>:tabn 9<CR>
+  map <C-1> :tabn 1<CR>
+  map <C-2> :tabn 2<CR>
+  map <C-3> :tabn 3<CR>
+  map <C-4> :tabn 4<CR>
+  map <C-5> :tabn 5<CR>
+  map <C-6> :tabn 6<CR>
+  map <C-7> :tabn 7<CR>
+  map <C-8> :tabn 8<CR>
+  map <C-9> :tabn 9<CR>
+  map! <C-1> <C-O>:tabn 1<CR>
+  map! <C-2> <C-O>:tabn 2<CR>
+  map! <C-3> <C-O>:tabn 3<CR>
+  map! <C-4> <C-O>:tabn 4<CR>
+  map! <C-5> <C-O>:tabn 5<CR>
+  map! <C-6> <C-O>:tabn 6<CR>
+  map! <C-7> <C-O>:tabn 7<CR>
+  map! <C-8> <C-O>:tabn 8<CR>
+  map! <C-9> <C-O>:tabn 9<CR>
 endif
 
 "Smart way to move btw. windows
@@ -565,15 +565,15 @@ map <C-l> <C-w>l
 
 
 "Pretty format JSON
-map <leader>jt	<Esc>:%!json_xs -f json -t json-pretty<CR>
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 "Open in browser with cmd-enter
 if has("macunix")
-	nmap <D-CR> <Plug>(openbrowser-open)
-	vmap <D-CR> <Plug>(openbrowser-open)
+  nmap <D-CR> <Plug>(openbrowser-open)
+  vmap <D-CR> <Plug>(openbrowser-open)
 else
-	nmap <C-CR> <Plug>(openbrowser-open)
-	vmap <C-CR> <Plug>(openbrowser-open)
+  nmap <C-CR> <Plug>(openbrowser-open)
+  vmap <C-CR> <Plug>(openbrowser-open)
 endif
 
 " Add emacs beginning and end of line
@@ -613,25 +613,6 @@ let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 " Syntastic configuration variables
 let g:syntastic_python_checker_args="--indent-string='  '"
 
-" OmnicompleteCpp
-set tags+=~/.vim/tags/stl
-" -- optional --
-" auto close options when exiting insert mode or moving away
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-" set completeopt=menu,menuone
+let g:clang_use_library = 1
 
-" -- configs --
-let OmniCpp_MayCompleteDot = 0 " autocomplete with .
-let OmniCpp_MayCompleteArrow = 0 " autocomplete with ->
-let OmniCpp_MayCompleteScope = 0 " autocomplete with ::
-let OmniCpp_SelectFirstItem = 0 " don't select first item
-let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
-let OmniCpp_LocalSearchDecl = 1 " don't require special style of function opening braces
-
-" -- ctags --
-" map <ctrl>+F12 to generate ctags for current folder:
-map <C-x><C-t> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-" add current directory's generated tags file to available tags
-set tags+=./tags
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['java'] }
