@@ -76,9 +76,6 @@
 [submodule "bundle/clang_complete"]
 	path = bundle/clang_complete
 	url = https://github.com/Rip-Rip/clang_complete.git
-[submodule "bundle/vim-g"]
-	path = bundle/vim-g
-	url = https://github.com/szw/vim-g.git
 [submodule "bundle/vim-powerline"]
 	path = bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
