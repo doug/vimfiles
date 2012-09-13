@@ -161,7 +161,7 @@ endfunction
 "recalculate the long line warning when idle and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 
-"return a warning for "long lines" where "long" is either &textwidth or 80 (if
+"return a warning for "long lines" where "long" is either &textwidth or 100 (if
 "no &textwidth is set)
 "
 "return '' if no long lines
@@ -192,7 +192,7 @@ endfunction
 
 "return a list containing the lengths of the long lines in this buffer
 function! s:LongLines()
-  let threshold = (&tw ? &tw : 80)
+  let threshold = (&tw ? &tw : 100)
   let spaces = repeat(" ", &ts)
 
   let long_line_lens = []
@@ -361,10 +361,10 @@ function! SetCursorPosition()
 endfunction
 
 "define :HighlightLongLines command to highlight the offending parts of
-"lines that are longer than the specified length (defaulting to 80)
+"lines that are longer than the specified length (defaulting to 100)
 command! -nargs=? HighlightLongLines call s:HighlightLongLines('<args>')
 function! s:HighlightLongLines(width)
-  let targetWidth = a:width != '' ? a:width : 79
+  let targetWidth = a:width != '' ? a:width : 99
   if targetWidth > 0
     exec 'match Todo /\%>' . (targetWidth) . 'v/'
   else
@@ -508,10 +508,10 @@ set ignorecase      " case-insensitive search
 set smartcase       " upper-case sensitive search
 
 
-set textwidth=80
+set textwidth=100
 highlight ColorColumn ctermbg=black guibg=#444444
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+match OverLength /\%101v.\+/
 
 " Map switching tabs to cmd-1,2,3, etc like TextMate
 if has("macunix")
