@@ -486,7 +486,8 @@ if &t_Co >= 256 || has("gui_running")
   if has("gui_running")
     colorscheme monokai
   else
-    colorscheme solarized
+    colorscheme monokai
+    " colorscheme solarized
     "colorscheme darkspectrum
   endif
 endif
@@ -497,6 +498,9 @@ set background=dark
 let g:solarized_termtrans=1
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
+
+" set the terminal background to none in vim
+hi Normal ctermbg=NONE
 
 if &t_Co > 2 || has("gui_running")
   " switch syntax highlighting on, when the terminal has colors
