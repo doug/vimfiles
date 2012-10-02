@@ -641,3 +641,14 @@ set completeopt=menu,menuone,longest
 
 " vim-g open with vim
 let g:vim_g_open_command = "open"
+
+" autocommand
+" check for changes automatically
+au CursorHold * checktime
+au WinEnter * checktime
+au BufWinEnter * checktime
+
+augroup filetype
+  au! BufRead,BufNewFile *.proto setfiletype proto
+  au! BufRead,BufNewFile *.go setfiletype go
+augroup end
