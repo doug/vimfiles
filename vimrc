@@ -644,10 +644,10 @@ let g:vim_g_open_command = "open"
 
 " autocommand
 " check for changes automatically
-au CursorHold * checktime
+" au CursorHold * checktime
 au WinEnter * checktime
 au BufWinEnter * checktime
-
+"
 augroup filetype
   au! BufRead,BufNewFile *.proto set ft=proto
   au! BufRead,BufNewFile *.go set ft=go
