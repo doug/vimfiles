@@ -649,6 +649,6 @@ au WinEnter * checktime
 au BufWinEnter * checktime
 
 augroup filetype
-  au! BufRead,BufNewFile *.proto setfiletype proto
-  au! BufRead,BufNewFile *.go setfiletype go
+  au! BufRead,BufNewFile *.proto set ft=proto
+  au! BufRead,BufNewFile *.go set ft=go
 augroup end
