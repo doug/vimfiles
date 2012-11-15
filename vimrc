@@ -571,7 +571,8 @@ map <C-l> <C-w>l
 
 
 "Pretty format JSON
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+" map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+map <leader>jt  <Esc>:%!python -m json.tool<CR>
 
 "Open in browser with cmd-enter
 if has("macunix")
