@@ -3,10 +3,10 @@
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "snippets"]
 	path = snippets
-	url = git@github.com:doug/snipmate-snippets.git
+	url = https://github.com:doug/snipmate-snippets.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
-	url = git@github.com:doug/snipmate.vim.git
+	url = https://github.com/doug/snipmate.vim.git
 [submodule "bundle/open-browser"]
 	path = bundle/open-browser
 	url = https://github.com/tyru/open-browser.vim.git
@@ -39,7 +39,7 @@
 	url = https://github.com/vim-scripts/greplace.vim.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/vim-scripts/SuperTab-continued..git
@@ -48,7 +48,7 @@
 	url = https://github.com/garyharan/vim-proto.git
 [submodule "bundle/vim-dart"]
 	path = bundle/vim-dart
-	url = git://github.com/bartekd/vim-dart.git
+	url = https://github.com/bartekd/vim-dart.git
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
