@@ -97,9 +97,6 @@ nmap <C-Up> :resize +2<CR>
 nmap <C-Down> :resize -2<CR>
 
 
-"recalculate the trailing whitespace warning when idle, and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-
 "return '[\s]' if trailing white space is detected
 "return '' otherwise
 function! StatuslineTrailingSpaceWarning()
@@ -130,8 +127,15 @@ function! StatuslineCurrentHighlight()
   endif
 endfunction
 
-"recalculate the tab warning flag when idle and after writing
-autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+augroup style_warning
+  autocmd!
+  "recalculate the trailing whitespace warning when idle, and after saving
+  autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+  "recalculate the tab warning flag when idle and after writing
+  autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+  "recalculate the long line warning when idle and after saving
+  autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
+augroup end
 
 "return '[&et]' if &et is set wrong
 "return '[mixed-indenting]' if spaces and tabs are used to indent
@@ -158,8 +162,6 @@ function! StatuslineTabWarning()
   return b:statusline_tab_warning
 endfunction
 
-"recalculate the long line warning when idle and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 
 "return a warning for "long lines" where "long" is either &textwidth or 100 (if
 "no &textwidth is set)
@@ -282,8 +284,8 @@ set visualbell
 set noerrorbells
 
 "display tabs and trailing spaces
-" set list
-" set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
 "if has('autocmd')
   "autocmd filetype html,xml set listchars-=tab:>.
 "endif
@@ -350,7 +352,10 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
-autocmd BufReadPost * call SetCursorPosition()
+augroup cursor
+  autocmd!
+  autocmd BufReadPost * call SetCursorPosition()
+augroup end
 function! SetCursorPosition()
   if &filetype !~ 'svn\|commit\c'
     if line("'\"") > 0 && line("'\"") <= line("$")
@@ -453,12 +458,12 @@ else
   vmap <C-C> "+y
 endif
 
-" remove trailing whitespace
-"autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " remove trailing whitespace and pesky ^M
-"autocmd BufEnter * :%s/[ \t\r]\+$//e
-autocmd BufWritePre * :%s/[ \t\r]\+$//e
+augroup whitespace
+  autocmd!
+  autocmd BufWritePre * :%s/[ \t\r]\+$//e
+augroup end
 
 
 " Make shift in visual block & insert modes more like a normal text editor
@@ -645,11 +650,29 @@ let g:vim_g_open_command = "open"
 
 " autocommand
 " check for changes automatically
-au CursorHold * checktime
-au WinEnter * checktime
-au BufWinEnter * checktime
+augroup modified
+  autocmd!
+  autocmd CursorHold * checktime
+  autocmd WinEnter * checktime
+  autocmd BufWinEnter * checktime
+augroup end
 
 augroup filetype
-  au! BufRead,BufNewFile *.proto set ft=proto
-  au! BufRead,BufNewFile *.go set ft=go
+  autocmd!
+  autocmd BufRead,BufNewFile *.proto set ft=proto
+  autocmd BufRead,BufNewFile *.go set ft=go
 augroup end
+
+" Automatic formating on save
+augroup go
+  autocmd!
+  autocmd FileType go autocmd BufWritePre <buffer> Fmt
+  autocmd FileType go set noexpandtab
+augroup end
+
+" Fixjsstyle
+" augroup javascript
+"   autocmd!
+"   autocmd FileType javascript autocmd BufWritePost execute '!fixjsstyle '.expand('%:p')
+" augroup end
+
