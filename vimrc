@@ -315,12 +315,12 @@ endif
 if has("gui_running")
   if has("macunix")
     "set guifont=Monaco:h11
-    " set guifont=Anonymous\ Pro:h12
-    set guifont=Inconsolata:h12
+    set guifont=Anonymous\ Pro:h12
+    " set guifont=Inconsolata:h12
   else
     "set guifont=Andale\ Mono\ 11
-    " set guifont=Anonymous\ Pro\ 12
-    set guifont=Inconsolata\ 12
+    set guifont=Anonymous\ Pro\ 12
+    " set guifont=Inconsolata\ 12
   endif
   " Download from http://www.google.com/webfonts/download?kit=AoqDo8EPffat6Blizo0-XIfYGaZajvNcRmAagyCNG_U
   "set guifont=Anonymous\ Pro:h11
