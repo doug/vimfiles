@@ -667,7 +667,7 @@ augroup end
 augroup go
   autocmd!
   autocmd FileType go autocmd BufWritePre <buffer> Fmt
-  autocmd FileType go set noexpandtab
+  autocmd FileType go setlocal noexpandtab
 augroup end
 
 " Fixjsstyle
