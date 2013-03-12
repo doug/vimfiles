@@ -82,3 +82,6 @@
 [submodule "snippets"]
 	path = snippets
 	url = https://github.com/doug/snipmate-snippets.git
+[submodule "bundle/gitgutter"]
+	path = bundle/gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
